@@ -60,7 +60,7 @@ func (g *Game) Cleanup(ctx context.Context) {
 			g.lock.Lock()
 			if now.Sub(g.LastGame) > g.CleanupInterval {
 				pair := g.LuckyStack.Pop()
-				GetLogger().Infow("cleanup", "now", now, "pair", pair)
+				GetLogger().Infow("cleanup", "now", now, "last_game_dt", g.LastGame, "pair", pair)
 			}
 			g.lock.Unlock()
 		}
